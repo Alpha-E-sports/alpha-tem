@@ -328,7 +328,7 @@ body{background:#080000;color:#fff;font-family:'Noto Sans JP',sans-serif;min-hei
 
 <script>
 // ===== GAS URL =====
-function getGasUrl(){return localStorage.getItem('alpha_gas_url')||'';}
+function getGasUrl(){return 'https://script.google.com/macros/s/AKfycbzhMGZW8PEGn7wkq5su926qvTbvmGjV64V0o1-29Dp3vLPP0cdbbRgqSAgeOCEZLbdyYw/exec';}
 function saveGasUrl(){
   const url=document.getElementById('gas-url-input').value.trim();
   if(!url){showNotif('❌ URLを入力してください');return;}
