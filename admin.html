@@ -490,7 +490,7 @@ function renderMTable(){
 function openMemberModal(){
   document.getElementById('mm-title').textContent='メンバー追加';
   document.getElementById('mm-id').value='';
-  ['mm-name','mm-rname','mm-tw','mm-kills','mm-wins','mm-kd','mm-img','mm-bio'].forEach(id=>document.getElementById(id).value='');
+  ['mm-name','mm-rname','mm-tw','mm-pr','mm-salary','mm-img','mm-bio'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('mm-role').value='選手';
   document.getElementById('mm-prev').style.display='none';
   document.getElementById('mm-ov').classList.add('active');
@@ -503,9 +503,8 @@ function editMember(id){
   document.getElementById('mm-rname').value=m.realName||'';
   document.getElementById('mm-role').value=m.role||'選手';
   document.getElementById('mm-tw').value=m.twitter||'';
-  document.getElementById('mm-kills').value=m.kills||'';
-  document.getElementById('mm-wins').value=m.wins||'';
-  document.getElementById('mm-kd').value=m.kd||'';
+  document.getElementById('mm-pr').value=m.pr||'';
+  document.getElementById('mm-salary').value=m.salary||'';
   document.getElementById('mm-img').value=m.image||'';
   document.getElementById('mm-bio').value=m.bio||'';
   if(m.image){document.getElementById('mm-prev-img').src=m.image;document.getElementById('mm-prev').style.display='flex';}
@@ -519,7 +518,7 @@ async function saveMember(){
   const url=getGasUrl();
   if(!url){showNotif('❌ GAS URLが設定されていません');return;}
   const id=document.getElementById('mm-id').value;
-  const data={name,realName:document.getElementById('mm-rname').value.trim(),role:document.getElementById('mm-role').value,twitter:document.getElementById('mm-tw').value.trim(),kills:document.getElementById('mm-kills').value.trim(),wins:document.getElementById('mm-wins').value.trim(),kd:document.getElementById('mm-kd').value.trim(),image:document.getElementById('mm-img').value.trim(),bio:document.getElementById('mm-bio').value.trim()};
+  const data={name,realName:document.getElementById('mm-rname').value.trim(),role:document.getElementById('mm-role').value,twitter:document.getElementById('mm-tw').value.trim(),pr:document.getElementById('mm-pr').value.trim(),salary:document.getElementById('mm-salary').value.trim(),image:document.getElementById('mm-img').value.trim(),bio:document.getElementById('mm-bio').value.trim()};
   const pass=localStorage.getItem('alpha_admin_pass')||'alpha';
   try{
     let res;
