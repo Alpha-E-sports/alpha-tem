@@ -547,7 +547,27 @@ function renderSponsors(){
 }
 
 // ===== CONTACT FORM =====
-document.getElementById('cf').addEventListener('submit',e=>{e.preventDefault();showNotif('✓ お問合せを受け付けました');e.target.reset();});
+document.getElementById('cf').addEventListener('submit', async e => {
+    e.preventDefault();
+    const fields = e.target.querySelectorAll('input, select, textarea');
+    const data = {
+        name: fields[0].value,
+        email: fields[1].value,
+        type: fields[2].value,
+        subject: fields[3].value,
+        message: fields[4].value
+    };
+    try {
+        const res = await fetch(getGasUrl(), {
+            method: 'POST',
+            body: JSON.stringify({ action: 'contact', data })
+        });
+        showNotif('✓ お問合せを送信しました');
+        e.target.reset();
+    } catch(err) {
+        showNotif('❌ 送信に失敗しました');
+    }
+});
 
 // ===== STORAGE SYNC (同ブラウザ更新用) =====
 window.addEventListener('storage',()=>loadAll());
