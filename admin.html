@@ -233,7 +233,7 @@ body{background:#080000;color:#fff;font-family:'Noto Sans JP',sans-serif;min-hei
             <option value="">全ロール</option><option>運営</option><option>選手</option><option>1st育成</option><option>2nd育成</option><option>CS</option><option>ストリーマー</option><option>Editor</option><option>アナリスト</option>
           </select>
         </div>
-        <div class="tw"><table class="dt"><thead><tr><th style="width:50px">画像</th><th>ゲームID</th><th>本名</th><th>ロール</th><th>X</th><th>K/D</th><th>WINS</th><th>操作</th></tr></thead><tbody id="m-tbody"></tbody></table></div>
+        <div class="tw"><table class="dt"><thead><tr><th style="width:50px">画像</th><th>ゲームID</th><th>本名</th><th>ロール</th><th>X</th><th>PR</th><th>$</th><th>操作</th></tr></thead><tbody id="m-tbody"></tbody></table></div>
       </div>
 
       <!-- SPONSORS -->
@@ -290,11 +290,8 @@ body{background:#080000;color:#fff;font-family:'Noto Sans JP',sans-serif;min-hei
     <div class="fg"><label>ロール *</label><select id="mm-role"><option>運営</option><option>選手</option><option>1st育成</option><option>2nd育成</option><option>CS</option><option>ストリーマー</option><option>Editor</option><option>アナリスト</option></select></div>
     <div class="fg"><label>X (Twitter) ID</label><input type="text" id="mm-tw" placeholder="@username"></div>
     <div class="fr2">
-      <div class="fg"><label>KILLS</label><input type="text" id="mm-kills" placeholder="1234"></div>
-      <div class="fg"><label>WINS</label><input type="text" id="mm-wins" placeholder="56"></div>
-    </div>
-    <div class="fg"><label>K/D</label><input type="text" id="mm-kd" placeholder="4.2"></div>
-    <div class="fg">
+<div class="fg"><label>PR</label><input type="text" id="mm-pr" placeholder="1000"></div>
+<div class="fg"><label>$</label><input type="text" id="mm-salary" placeholder="50000"></div>
       <label>画像 URL または Base64</label>
       <input type="text" id="mm-img" placeholder="https://..." oninput="prevMImg()">
       <div style="margin-top:8px"><input type="file" id="mm-imgf" accept="image/*" style="display:none" onchange="loadMImgFile(event)"><button type="button" class="btn-e" onclick="document.getElementById('mm-imgf').click()">📁 ファイル選択</button></div>
@@ -483,8 +480,8 @@ function renderMTable(){
     <td style="font-size:12px;color:rgba(255,255,255,.5)">${m.realName||'-'}</td>
     <td><span class="rbadge">${m.role||'-'}</span></td>
     <td style="font-size:12px">${m.twitter?`<a href="https://x.com/${m.twitter.replace('@','')}" target="_blank" style="color:var(--red-b);text-decoration:none">@${m.twitter.replace('@','')}</a>`:'-'}</td>
-    <td style="color:var(--red-b);font-family:'Bebas Neue';font-size:18px">${m.kd||'-'}</td>
-    <td style="color:var(--red-b);font-family:'Bebas Neue';font-size:18px">${m.wins||'-'}</td>
+    <td style="color:var(--red-b);font-family:'Bebas Neue';font-size:18px">${m.PR||'-'}</td>
+    <td style="color:var(--red-b);font-family:'Bebas Neue';font-size:18px">${m.$||'-'}</td>
     <td style="white-space:nowrap"><button class="btn-e" onclick="editMember('${m.id}')">編集</button> <button class="btn-d" onclick="deleteMember('${m.id}')">削除</button></td>
   </tr>`).join('');
 }
